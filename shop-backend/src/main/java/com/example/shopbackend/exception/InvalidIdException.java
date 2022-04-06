@@ -1,4 +1,4 @@
-package com.example.shopbackend.exeption;
+package com.example.shopbackend.exception;
 
 public class InvalidIdException extends RuntimeException{
     public InvalidIdException() {

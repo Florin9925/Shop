@@ -1,4 +1,4 @@
-package com.example.shopbackend.exeption;
+package com.example.shopbackend.exception;
 
 public class InvalidDataException extends RuntimeException{
     public InvalidDataException() {
