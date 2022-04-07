@@ -1,0 +1,80 @@
+.logo {
+      width: min-content;
+      height: 100px;
+      
+    }
+    .nav-items{
+      padding-top: 20px;
+}
+#header {
+      padding: 1em 0;
+      font-family: 'Nunito', sans-serif;
+      display: flex;
+      justify-content: space-between;
+      background-color: white;
+    }
+    a:link,
+    a:visited  {
+      color: #0454b4;
+      text-align: center;
+      font-size: 22px;
+      text-decoration: none;
+      display: inline-block;
+      padding: 5px 30px;
+
+    }
+    
+ a:hover,
+    a:active {
+      background-color: #0454b4;
+      color: white;
+      border-radius: 15px;
+}
+.active{
+      background-color: #0454b4;
+      color: white !important;
+      border-radius: 15px;
+}
+table {
+  width: 80%;
+  margin: 12px;
+}
+.table_container{
+  display: flex;
+  justify-content: center;
+}
+.mat-table {
+  background: #ffffff;
+}
+.mat-column-name, .mat-column-description {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 35% !important;
+  width: 35% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+ .add_button{
+  width: 120px;
+  color: #ffffff;
+  background-color: #0454b4;
+  border:none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+.add_button:hover {background-color: #022652}
+.add_button:active {
+  background-color: #022652;
+  transform: translateY(4px);
+}
+.inventory-page mat-form-field {
+  margin-left: 12px;
+}
