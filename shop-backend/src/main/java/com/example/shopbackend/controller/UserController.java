@@ -23,21 +23,21 @@ public class UserController {
     @GetMapping()
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<List<User>> getAllUsers(Principal principal) {
-        log.info("getAllUsers");
+        log.info(this.getClass().getName()," getAllUsers");
         return ResponseEntity.ok(userService.findAll());
     }
 
     @PostMapping()
     @PreAuthorize("hasAuthority('user:write')")
     public ResponseEntity<User> createUser(@RequestBody User user) {
-        log.info("createUser");
+        log.info(this.getClass().getName()," createUser");
         return ResponseEntity.ok(userService.save(user));
     }
 
     @DeleteMapping()
     @PreAuthorize("hasAuthority('user:write')")
     public ResponseEntity<?> deleteAll() {
-        log.info("deleteAll");
+        log.info(this.getClass().getName()," deleteAll");
         userService.deleteAll();
         return ResponseEntity.ok().build();
     }
@@ -45,7 +45,7 @@ public class UserController {
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('user:write')")
     public ResponseEntity<?> deleteById(@PathVariable Long id) {
-        log.info("deleteById");
+        log.info(this.getClass().getName()," deleteById");
         userService.deleteById(id);
         return ResponseEntity.ok().build();
     }

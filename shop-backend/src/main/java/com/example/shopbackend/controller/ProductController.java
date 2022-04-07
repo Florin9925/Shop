@@ -28,7 +28,7 @@ public class ProductController {
     @GetMapping()
     @PreAuthorize("hasAuthority('product:read')")
     public ResponseEntity<List<Product>> getAllProducts() {
-        log.info("getAllProducts");
+        log.info(this.getClass().getName(), " getAllProducts");
 
         return ResponseEntity.ok(productService.findAll());
     }
@@ -36,10 +36,9 @@ public class ProductController {
     @GetMapping("/{productName}")
     public ResponseEntity<Product> getProductByName(
             @PathVariable @Valid @NotNull @Size(min = 3) String productName, BindingResult bindingResult) {
-        log.info("getProductByName");
+        log.info(this.getClass().getName(), " getProductByName");
 
-        if(bindingResult.hasErrors())
-        {
+        if (bindingResult.hasErrors()) {
             throw new InvalidDataException("Invalid product name");
         }
 
@@ -49,16 +48,17 @@ public class ProductController {
     @PostMapping()
     @PreAuthorize("hasAuthority('product:write')")
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        log.info("createProduct");
+        log.info(this.getClass().getName(), " createProduct");
 
-        System.out.println(product);
+        log.info(product.toString());
+
         return ResponseEntity.ok(productService.save(product));
     }
 
     @DeleteMapping()
     @PreAuthorize("hasAuthority('product:delete')")
     public ResponseEntity deleteAll() {
-        log.info("deleteAll");
+        log.info(this.getClass().getName(), " deleteAll");
 
         productService.deleteAll();
         return ResponseEntity.ok().build();
@@ -67,7 +67,7 @@ public class ProductController {
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('product:delete')")
     public ResponseEntity<?> deleteById(@PathVariable Long id) {
-        log.info("deleteById");
+        log.info(this.getClass().getName(), " deleteById");
 
         productService.deleteById(id);
         return ResponseEntity.ok().build();

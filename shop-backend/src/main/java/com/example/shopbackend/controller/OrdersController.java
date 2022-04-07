@@ -40,7 +40,7 @@ public class OrdersController {
     @GetMapping("/admin")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<List<OrderDetails>> getAllOrders() {
-        log.info("getAllOrders");
+        log.info(this.getClass().getName()," getAllOrders");
 
         List<OrderDetails> orders = orderService.findAll();
         return ResponseEntity.ok(orders);
@@ -49,7 +49,7 @@ public class OrdersController {
     @GetMapping("/{orderId}/items")
     @PreAuthorize("hasAuthority('order:read')")
     public ResponseEntity<List<OrderItem>> getAllOrderItems(@PathVariable Long orderId, Principal principal) {
-        log.info("getAllOrderItems");
+        log.info(this.getClass().getName()," getAllOrderItems");
 
         User user = userService.findByUsername(principal.getName());
         List<OrderDetails> orders = orderService.findAllById(user.getId());
@@ -68,11 +68,12 @@ public class OrdersController {
     @GetMapping()
     @PreAuthorize("hasAuthority('order:read')")
     public ResponseEntity<List<OrderDetails>> getAllOrdersByUserId(Principal principal) {
-        log.info("getAllOrdersByUserId");
+        log.info(this.getClass().getName()," getAllOrdersByUserId");
 
         User user = userService.findByUsername(principal.getName());
 
-        System.out.println("The current user " + user.getUsername());
+        log.info("The current user " + user.getUsername());
+
         List<OrderDetails> orders = orderService.findAllById(user.getId());
 
         return ResponseEntity.ok(orders);
@@ -87,7 +88,7 @@ public class OrdersController {
             BindingResult bindingResult,
             Principal principal) {
 
-        log.info("createOrder");
+        log.info(this.getClass().getName()," createOrder");
 
 
         if (bindingResult.hasErrors()) {
@@ -109,7 +110,7 @@ public class OrdersController {
     public ResponseEntity<OrderDetails> addOrderItemToOrder(
             @PathVariable Long orderId, @RequestBody @ApiParam Map<String, Object> requestBody) {
 
-        log.info("addOrderItemToOrder");
+        log.info(this.getClass().getName()," addOrderItemToOrder");
 
         Objects.requireNonNull(orderId);
         final ObjectMapper objectReader = new ObjectMapper();

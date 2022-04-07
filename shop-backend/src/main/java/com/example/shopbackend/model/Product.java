@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Getter @Setter
+@ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,10 +28,6 @@ public class Product {
 
     @Size(min = 5, max = 250)
     private String description;
-
-    @NotNull
-    @Column(nullable = false)
-    private Double price = 0D;
 
     @NotNull
     @Column(nullable = false)
