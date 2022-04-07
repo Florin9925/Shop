@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         );
 
         log.info(user.getUsername());
-        
+
         return new MyUserDetails(user, user.getRole().getGrantedAuthorities());
     }
 }
